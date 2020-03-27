@@ -8,8 +8,6 @@ const Login = () => {
     password: ""
   });
   const history = useHistory();
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
 
   const handleChange = e => {
     setCredentials({
@@ -24,7 +22,7 @@ const Login = () => {
       .post("http://localhost:5001/api/login", credentials)
       .then(res => {
         window.localStorage.setItem("token", JSON.stringify(res.data.payload));
-        history.push("/private");
+        history.push("/bubbles");
       })
       .catch(err => console.log(err));
   };
